@@ -24,10 +24,12 @@ const AppSidebar = () => {
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.sidebarShow)
 
+  const navItems = Navigation()
+
   return (
     <CSidebar
       className="border-end"
-      size="lg"
+      size="md"
       colorScheme="dark"
       position="fixed"
       unfoldable={unfoldable}

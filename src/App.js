@@ -7,6 +7,8 @@ import './scss/style.scss'
 
 // Contexts
 import { AuthProvider } from './context/AuthContext'
+import { CategoryProvider } from './context/CategoryContext'
+import CategoryList from './views/pages/categoryList/CategoryList'
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
@@ -45,14 +47,19 @@ const App = () => {
         }
       >
         <AuthProvider>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="*" element={<DefaultLayout />} />
-            </Route>
-            <Route path="*" element={<Page404 />} />
-          </Routes>
+          <CategoryProvider>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="*" element={<DefaultLayout />} />
+                <Route path="categories">
+                  <Route index element={<CategoryList />} />
+                </Route>
+              </Route>
+              <Route path="*" element={<Page404 />} />
+            </Routes>
+          </CategoryProvider>
         </AuthProvider>
       </Suspense>
     </HashRouter>

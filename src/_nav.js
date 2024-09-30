@@ -1,42 +1,61 @@
 import { useEffect, useState } from 'react'
 import CIcon from '@coreui/icons-react'
-import { cilSpeedometer, cilPencil } from '@coreui/icons'
-import { CNavItem, CNavTitle } from '@coreui/react'
+import { cilSpeedometer, cilCircle, cilDrop, cilPencil, cilPlus, cilList } from '@coreui/icons'
+import { CNavItem, CNavTitle, CNavGroup } from '@coreui/react'
 import axios from 'axios'
 import { baseUrl } from './api/api'
 
 export const Navigation = () => {
-  const [categories, setCategories] = useState([])
+  const [parentCategories, setParentCategories] = useState([])
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchParentCategories = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/category`)
-        setCategories(response.data.data)
+        const response = await axios.get(`${baseUrl}/category/parent`)
+        setParentCategories(response.data.data)
       } catch (error) {
         console.error('Error fetching categories:', error)
       }
     }
 
-    fetchCategories()
+    fetchParentCategories()
   }, [])
 
   const navItems = [
     {
       component: CNavItem,
-      name: 'Home',
+      name: 'Dashboard',
       to: '/dashboard',
       icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     },
     {
       component: CNavTitle,
+      name: 'Category CRUD',
+    },
+    {
+      component: CNavItem,
+      name: 'All Categories',
+      to: '/categories',
+      icon: <CIcon icon={cilList} customClassName="nav-icon" />,
+    },
+    {
+      component: CNavItem,
+      name: 'Add Category',
+      to: '/theme/colors',
+      icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+    },
+    {
+      component: CNavTitle,
       name: 'Categories',
     },
-    ...categories.map((category) => ({
+    ...parentCategories.map((category) => ({
       component: CNavItem,
-      name: category.categoryname,
+      name:
+        category.categoryname.length >= 25
+          ? `${category.categoryname.slice(0, 25)}...`
+          : category.categoryname,
       to: `/category/${category.id}`,
-      icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+      // icon: <CIcon icon={cilCircle} customClassName="nav-icon" />,
     })),
   ]
 
