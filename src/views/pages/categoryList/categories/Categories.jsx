@@ -1,22 +1,34 @@
+import React from 'react'
 import Category from './category/Category'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@mui/material'
 
 const Categories = ({ categories }) => {
   return (
-    <div>
-      <table striped bordered hover>
-        <thead>
-          <tr>
-            <th className="text-center">Name</th>
-            <th className="text-center">Parent Category</th>
-          </tr>
-        </thead>
-        <tbody>
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center">Parent Category</TableCell>
+            <TableCell align="center">Status</TableCell>
+            <TableCell align="center">Actions</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {categories.map((category) => (
             <Category key={category.id} category={category} />
           ))}
-        </tbody>
-      </table>
-    </div>
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
 

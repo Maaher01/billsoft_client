@@ -1,26 +1,31 @@
-import { useContext } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { TableCell, TableRow, Button } from '@mui/material'
 import { Link } from 'react-router-dom'
-import CategoryContext from '../../../../../context/CategoryContext'
 
 const Category = ({ category }) => {
-  const { categories, setCategories } = useContext(CategoryContext)
-  const navigate = useNavigate()
-
-  const { id } = useParams()
-
   return (
-    <tr>
-      <td className="text-center">{category.categoryname}</td>
-      <td className="d-flex gap-1">
-        <Link to={`/categories/edit/${category.id}`}>
-          <button className="btn btn-success btn-sm">Edit</button>
-        </Link>
-        <button className="btn btn-danger btn-sm" onClick={() => handleDelete(category.id)}>
-          Delete
-        </button>
-      </td>
-    </tr>
+    <TableRow>
+      <TableCell align="center">{category.categoryname}</TableCell>
+      <TableCell align="center">{category.parentcategory || 'Parent'}</TableCell>
+      <TableCell align="center">{category.status === 1 ? 'Active' : 'Inactive'}</TableCell>
+      <TableCell>
+        <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+          <Link to={`/categories/edit/${category.id}`}>
+            <Button variant="contained" color="success" size="small">
+              Edit
+            </Button>
+          </Link>
+          <Button
+            variant="contained"
+            color="error"
+            size="small"
+            onClick={() => handleDelete(category.id)}
+          >
+            Delete
+          </Button>
+        </div>
+      </TableCell>
+    </TableRow>
   )
 }
 

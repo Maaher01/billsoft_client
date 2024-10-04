@@ -7,8 +7,8 @@ const CategoryList = () => {
 
   return (
     <main className="Home">
-      <div className="d-flex justify-content-between mb-4 mt-5">
-        <h4>All Categories</h4>
+      <div className="d-flex justify-content-between mb-3 mt-1">
+        <h3>All Categories</h3>
       </div>
 
       {isLoading && <p className="statusMsg">Loading categories...</p>}
