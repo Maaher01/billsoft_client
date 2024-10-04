@@ -8,7 +8,6 @@ import './scss/style.scss'
 // Contexts
 import { AuthProvider } from './context/AuthContext'
 import { CategoryProvider } from './context/CategoryContext'
-import CategoryList from './views/pages/categoryList/CategoryList'
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
@@ -17,7 +16,6 @@ const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
-const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
 const App = () => {
   const { isColorModeSet, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
@@ -52,10 +50,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route element={<ProtectedRoute />}>
-                <Route path="*" element={<DefaultLayout />} />
-                <Route path="categories">
-                  <Route index element={<CategoryList />} />
-                </Route>
+                <Route path="/*" element={<DefaultLayout />} />
               </Route>
               <Route path="*" element={<Page404 />} />
             </Routes>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import CIcon from '@coreui/icons-react'
-import { cilSpeedometer, cilCircle, cilDrop, cilPencil, cilPlus, cilList } from '@coreui/icons'
-import { CNavItem, CNavTitle, CNavGroup } from '@coreui/react'
+import { cilSpeedometer, cilCircle, cilPlus, cilList } from '@coreui/icons'
+import { CNavItem, CNavTitle } from '@coreui/react'
 import axios from 'axios'
 import { baseUrl } from './api/api'
 

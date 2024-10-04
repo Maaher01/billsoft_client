@@ -1,5 +1,4 @@
 import Category from './category/Category'
-import { useState } from 'react'
 
 const Categories = ({ categories }) => {
   return (
