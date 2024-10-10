@@ -16,10 +16,18 @@ const Categories = ({ categories }) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Parent Category</TableCell>
-            <TableCell align="center">Status</TableCell>
-            <TableCell align="center">Actions</TableCell>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+              Name
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+              Parent Category
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+              Status
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+              Actions
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
