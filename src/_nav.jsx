@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import CIcon from '@coreui/icons-react'
-import { cilSpeedometer, cilCircle, cilPlus, cilList } from '@coreui/icons'
+import { cilSpeedometer, cilPlus, cilList, cilCaretRight } from '@coreui/icons'
 import { CNavItem, CNavTitle } from '@coreui/react'
 import axios from 'axios'
 import { baseUrl } from './api/api'
@@ -30,7 +30,7 @@ export const Navigation = () => {
     },
     {
       component: CNavTitle,
-      name: 'Category CRUD',
+      name: 'Category Administration',
     },
     {
       component: CNavItem,
@@ -41,7 +41,7 @@ export const Navigation = () => {
     {
       component: CNavItem,
       name: 'Add Category',
-      to: '/theme/colors',
+      to: '/category/add',
       icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
     },
     {
@@ -54,8 +54,8 @@ export const Navigation = () => {
         category.categoryname.length >= 25
           ? `${category.categoryname.slice(0, 25)}...`
           : category.categoryname,
-      to: `/category/${category.id}`,
-      // icon: <CIcon icon={cilCircle} customClassName="nav-icon" />,
+      to: `/category/details/${category.id}`,
+      icon: <CIcon icon={cilCaretRight} customClassName="nav-icon" />,
     })),
   ]
 

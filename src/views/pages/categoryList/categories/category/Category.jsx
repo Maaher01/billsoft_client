@@ -46,11 +46,11 @@ const Category = ({ category }) => {
   return (
     <TableRow>
       <TableCell align="center">{category.categoryname}</TableCell>
-      <TableCell align="center">{category.parentcategory || 'Parent'}</TableCell>
+      <TableCell align="center">{category.parentcategoryname || 'Parent'}</TableCell>
       <TableCell align="center">{category.status === 1 ? 'Active' : 'Inactive'}</TableCell>
       <TableCell>
         <Box sx={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
-          <Link to={`/categories/edit/${category.id}`}>
+          <Link to={`/category/${category.id}`}>
             <Button
               variant="contained"
               color="success"
